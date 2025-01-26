@@ -1,6 +1,6 @@
 -- // GUI TO LUA \\ --
 
--- // INSTANCES: 8 | SCRIPTS: 2 | MODULES: 0 \\ --
+-- // INSTANCES: 8 | scrieptS: 2 | MODULES: 0 \\ --
 
 local UI = {}
 
@@ -74,28 +74,28 @@ UI["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 UI["6"]["Text"] = [[Virus 'em]]
 UI["6"]["Position"] = UDim2.new(0.21264, 0, 0.69154, 0)
 
--- // StarterGui.ScreenGui.Troll.Lul.LocalScript \\ --
-UI["7"] = Instance.new("LocalScript", UI["6"])
+-- // StarterGui.ScreenGui.Troll.Lul.Localscriept \\ --
+UI["7"] = Instance.new("Localscriept", UI["6"])
 
 
 -- // StarterGui.ScreenGui.Troll.Dragify \\ --
-UI["8"] = Instance.new("LocalScript", UI["2"])
+UI["8"] = Instance.new("Localscriept", UI["2"])
 UI["8"]["Name"] = [[Dragify]]
 
--- // StarterGui.ScreenGui.Troll.Lul.LocalScript \\ --
-local function SCRIPT_7()
-local script = UI["7"]
-	script.Parent.MouseButton1Click:Connect(function() 
-		local Target = script.Parent.Parent.Virus.Text
+-- // StarterGui.ScreenGui.Troll.Lul.Localscriept \\ --
+local function scriept_7()
+local scripet = UI["7"]
+	scripet.Parent.MouseButton1Click:Connect(function() 
+		local Target = UI["5"].Text
 		local Char = game.Players.LocalPlayer.CharacterAdded:Wait() or game.Players.LocalPlayer.Character
 		local Rem = Char.Virus.UseSelf
-		Rem:FireServer("game.Players"..script.Parent.Parent.Virus.Text)
+		Rem:FireServer("game.Players."..Target)
 	end)
 end
-task.spawn(SCRIPT_7)
+task.spawn(scriept_7)
 -- // StarterGui.ScreenGui.Troll.Dragify \\ --
-local function SCRIPT_8()
-local script = UI["8"]
+local function scriept_8()
+local scriept = UI["8"]
 	local UIS = game:GetService("UserInputService")
 	function dragify(Frame)
 		dragToggle = nil
@@ -131,9 +131,9 @@ local script = UI["8"]
 			end
 		end)
 	end
-	dragify(script.Parent)
+	dragify(UI["2"])
 	
 end
-task.spawn(SCRIPT_8)
+task.spawn(scriept_8)
 
 return UI["1"], require;
