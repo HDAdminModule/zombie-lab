@@ -6,6 +6,7 @@ local UI = {}
 
 -- // StarterGui.ScreenGui \\ --
 UI["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"))
+UI["1"]["Enabled"] = false
 UI["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling
 
 -- // StarterGui.ScreenGui.Troll \\ --
@@ -87,8 +88,8 @@ local script = UI["7"]
 	script.Parent.MouseButton1Click:Connect(function() 
 		local Target = script.Parent.Parent.Virus.Text
 		local Char = game.Players.LocalPlayer.CharacterAdded:Wait() or game.Players.LocalPlayer.Character
-		local Rem = Char:WaitForChild("Virus"):WaitForChild("UseSelf")
-		Rem:FireServer(script.Parent.Parent.Virus.Text)
+		local Rem = Char.Virus.UseSelf
+		Rem:FireServer("game.Players"..script.Parent.Parent.Virus.Text)
 	end)
 end
 task.spawn(SCRIPT_7)
@@ -98,7 +99,7 @@ local script = UI["8"]
 	local UIS = game:GetService("UserInputService")
 	function dragify(Frame)
 		dragToggle = nil
-		dragSpeed = 0
+		dragSpeed = 0.15
 		dragInput = nil
 		dragStart = nil
 		dragPos = nil
@@ -130,7 +131,7 @@ local script = UI["8"]
 			end
 		end)
 	end
-	dragify(UI["2"])
+	dragify(script.Parent)
 	
 end
 task.spawn(SCRIPT_8)
