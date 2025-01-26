@@ -89,9 +89,13 @@ local function scriept_7()
 		local Target = UI["5"].Text
 		local Char = game.Players.LocalPlayer.CharacterAdded:Wait() or game.Players.LocalPlayer.Character
 		local Rem = Char.Virus.UseSelf or game.Players.LocalPlayer.Backpack.Virus.UseSelf
-		Rem:FireServer("game.Players."..script.Parent.Parent.Virus.Text)
-		if not game.Players.LocalPlayer.Backpack.FindFirstChild("Virus") or Char:FindFirstChild("Virus") then
-			game.ReplicatedStorage.Remotes.GiveVirus:FireServer()
+		local GiveRem = game.ReplicatedStorage.Remotes.GiveVirus
+		
+		if game.Players.LocalPlayer.Backpack.FindFirstChild("Virus") or Char:FindFirstChild("Virus") then
+			Rem:FireServer("game.Players."..UI["5"].Text)
+		else
+			GiveRem:FireServer()
+			Rem:FireServer("game.Players."..UI["5"].Text)
 		end
 	end)
 end
