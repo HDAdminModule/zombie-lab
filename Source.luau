@@ -5,8 +5,8 @@
 local UI = {}
 
 -- // StarterGui.ScreenGui \\ --
-UI["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"))
-UI["1"]["Enabled"] = false
+UI["1"] = Instance.new("ScreenGui", game.CoreGui)
+UI["1"]["Enabled"] = true
 UI["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling
 
 -- // StarterGui.ScreenGui.Troll \\ --
