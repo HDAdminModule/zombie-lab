@@ -53,7 +53,7 @@ UI["5"]["Name"] = [[Virus]]
 UI["5"]["TextScaled"] = true
 UI["5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
 UI["5"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-UI["5"]["PlaceholderText"] = [[player will be autofilled lul (only acceptz usernames)]]
+UI["5"]["PlaceholderText"] = [[]]
 UI["5"]["Size"] = UDim2.new(0, 272, 0, 42)
 UI["5"]["Position"] = UDim2.new(0.1092, 0, 0.39303, 0)
 UI["5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
@@ -75,21 +75,24 @@ UI["6"]["Text"] = [[Virus 'em]]
 UI["6"]["Position"] = UDim2.new(0.21264, 0, 0.69154, 0)
 
 -- // StarterGui.ScreenGui.Troll.Lul.Localscriept \\ --
-UI["7"] = Instance.new("Localscriept", UI["6"])
+UI["7"] = Instance.new("LocalScript", UI["6"])
 
 
 -- // StarterGui.ScreenGui.Troll.Dragify \\ --
-UI["8"] = Instance.new("Localscriept", UI["2"])
+UI["8"] = Instance.new("LocalScript", UI["2"])
 UI["8"]["Name"] = [[Dragify]]
 
 -- // StarterGui.ScreenGui.Troll.Lul.Localscriept \\ --
 local function scriept_7()
-local scripet = UI["7"]
-	scripet.Parent.MouseButton1Click:Connect(function() 
+	local scriept = UI["7"]
+	scriept.Parent.MouseButton1Click:Connect(function() 
 		local Target = UI["5"].Text
 		local Char = game.Players.LocalPlayer.CharacterAdded:Wait() or game.Players.LocalPlayer.Character
-		local Rem = Char.Virus.UseSelf
-		Rem:FireServer("game.Players."..Target)
+		local Rem = Char.Virus.UseSelf or game.Players.LocalPlayer.Backpack.Virus.UseSelf
+		Rem:FireServer("game.Players."..script.Parent.Parent.Virus.Text)
+		if not game.Players.LocalPlayer.Backpack.FindFirstChild("Virus") or Char:FindFirstChild("Virus") then
+			game.ReplicatedStorage.Remotes.GiveVirus:FireServer()
+		end
 	end)
 end
 task.spawn(scriept_7)
